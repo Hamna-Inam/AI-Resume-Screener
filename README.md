@@ -33,7 +33,10 @@ with RBAC, PostgreSQL, versioned REST APIs, and a React dashboard.
 - [x] JWT + bcrypt security utilities
 - [x] SQLAlchemy models
 - [x] Pydantic schemas
-- [ ] Route handlers
+- [x] Auth routes (register, login) with JWT
+- [x] `get_current_user` + `require_role` (RBAC) dependencies
+- [x] Job description routes (create, list, get by id)
+- [x] Resume submission route with FK validation against job descriptions
 - [ ] Celery tasks
 - [ ] WebSockets
 - [ ] React dashboard
