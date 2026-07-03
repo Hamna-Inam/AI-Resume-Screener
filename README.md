@@ -37,11 +37,12 @@ with RBAC, PostgreSQL, versioned REST APIs, and a React dashboard.
 - [x] `get_current_user` + `require_role` (RBAC) dependencies
 - [x] Job description routes (create, list, get by id)
 - [x] Resume submission route with FK validation against job descriptions
-- [ ] Celery tasks
-- [ ] WebSockets
-- [ ] React dashboard
+- [x] Celery tasks
+- [x] WebSockets
 - [ ] CI/CD pipeline
 - [ ] AWS deployment
+- [x] Pytest test suite (auth, RBAC, duplicate handling)
+- [x] GitHub Actions CI pipeline (tests + Docker build on every push)
 
 ## Setup
 
