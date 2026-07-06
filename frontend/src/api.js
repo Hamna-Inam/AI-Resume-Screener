@@ -1,9 +1,7 @@
 import axios from 'axios';
 
-const API_BASE = 'http://localhost:8000';
-
 const api = axios.create({
-  baseURL: API_BASE,
+  baseURL: '/',
 });
 
 api.interceptors.request.use((config) => {
@@ -28,7 +26,6 @@ export const submitResume = (jobDescriptionId, candidateName, file) => {
   formData.append('job_description_id', jobDescriptionId);
   formData.append('candidate_name', candidateName);
   formData.append('file', file);
-
   return api.post('/v1/resumes', formData, {
     headers: { 'Content-Type': 'multipart/form-data' },
   });
@@ -40,4 +37,4 @@ export const getResumes = (params = {}) =>
 export const getStats = () =>
   api.get('/v1/stats');
 
-export const WS_BASE = 'ws://localhost:8000';
+export const WS_BASE = window.location.origin.replace('http', 'ws');
