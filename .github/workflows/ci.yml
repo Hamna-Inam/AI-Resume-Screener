@@ -63,3 +63,19 @@ jobs:
       - name: Build backend image
         working-directory: ./backend
         run: docker build -t resume-screener-backend:${{ github.sha }} .
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - name: Deploy to EC2
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USERNAME }}
+          key: ${{ secrets.EC2_KEY }}
+          script: |
+            cd AI-Resume-Screener
+            git pull
+            docker compose up -d --build
